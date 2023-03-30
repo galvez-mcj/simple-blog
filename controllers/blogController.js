@@ -15,7 +15,9 @@ const blog_details = (req, res) => {
         .then((result) => {
             res.render('details', { title: 'Blog Details', blog: result });
         })
-        .catch((err) => console.log(err))
+        .catch((err) => {
+            res.status(404).render('error', { title: 'Blog not found' })
+        })
 }
 
 const blog_create_get = (req, res) => {
