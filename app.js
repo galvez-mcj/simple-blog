@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express')
 const morgan = require('morgan')
 
@@ -8,7 +10,7 @@ const blogRoutes = require('./routes/blogRoutes')
 const app = express();
 
 // connect to mongodb
-const db_uri = '';
+const db_uri = process.env.DB_URI;
 mongoose.connect(db_uri)
     .then((result) => {
         console.log('db connected');
@@ -45,4 +47,4 @@ app.use((req, res) => {
 })
 
 
-app.listen(3000);
+app.listen(process.env.PORT);
